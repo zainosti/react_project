@@ -7,7 +7,14 @@ function APP() {
   return (
     <Routes>
       <Route path="/apiData" element={<APIDATA />} />
-      <Route path="/yourTasks" element={<TodoList />} />
+      <Route
+        path="/yourTasks"
+        element={
+          <div className="main-container">
+            <TodoList />
+          </div>
+        }
+      />
     </Routes>
   );
 }

@@ -119,6 +119,7 @@ const TodoList = () => {
             Add Task
           </button>
           <select className="status" onChange={handleSelection}>
+            <option>Filter</option>
             <option value="completed">Show Completed Tasks</option>
             <option value="incomplete">Show Incomplete Tasks</option>
           </select>
