@@ -157,6 +157,7 @@ const TodoList = () => {
                 if (ele.completed) {
                   return <div>{ele.title}</div>;
                 }
+                return null;
               })}
           </div>
         )}
@@ -168,6 +169,7 @@ const TodoList = () => {
                 if (!ele.completed) {
                   return <div>{ele.title}</div>;
                 }
+                return null;
               })}
           </div>
         )}
