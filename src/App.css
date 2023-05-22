@@ -1,7 +1,6 @@
 .cards {
   border: 4px solid #f90808;
 }
-
 .card {
   border: 1px solid #000;
   max-width: 480px;
@@ -19,27 +18,25 @@
   background-color: black;
   color: #fff;
 }
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .mainText {
   display: flex;
   justify-content: center;
 }
 .task_input {
-  padding: 8px;
+  padding: 10px 20px;
   font-size: 14px;
   border: 1px solid #dddddd;
   border-radius: 4px;
-  margin-bottom: 16px;
   width: 200px;
   margin-right: 8px;
+  color: #000;
+  background-color: transparent;
 }
-
 .add_btn {
   background-color: rgb(249, 148, 25);
   color: #ffffff;
@@ -50,11 +47,9 @@
   cursor: pointer;
   margin-right: 8px;
 }
-
 .add_btn:hover {
   filter: brightness(1.2);
 }
-
 .task_divide {
   display: flex;
   align-items: center;
@@ -69,33 +64,34 @@
   border-radius: 4px;
   margin-right: 8px;
 }
-
 .delete_btn,
 .complete_btn,
 .incomplete_btn,
 .edit_btn,
 .save_btn,
 .cancel_btn {
-  background-color: rgb(249, 148, 25);
-  color: #ffffff;
-  border: none;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
   border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
   cursor: pointer;
   margin-right: 8px;
 }
-
 .delete_btn:hover,
 .complete_btn:hover,
-.incomplete_btn:hover {
-  filter: brightness(1.2);
+.incomplete_btn:hover,
+.save_btn,
+.edit_btn,
+.cancel_btn {
+  background-color: white;
+  color: #8e44ad;
+  transition: background-color 0.3s ease;
 }
-
 .add_tasks {
   margin-bottom: 8px;
 }
-
 .status {
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -106,30 +102,25 @@
   width: 200px;
   margin-bottom: 16px;
 }
-
 .status option {
   background-color: #ffffff;
   color: #333333;
 }
-
 .status option:hover {
   background-color: #f5f5f5;
 }
-
 .status option:selected {
   background-color: #dddddd;
 }
-
 .allTasks {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .alltask {
-  width: 600px;
+  max-width: fit-content;
   padding: 16px;
-  background-color: #f5f5f5;
+  background-image: linear-gradient(120deg, #3498db, #8e44ad);
   border: 1px solid #dddddd;
   border-radius: 4px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -139,12 +130,9 @@
 .incomplete {
   width: 300px;
   padding: 16px;
-  background-color: #f5f5f5;
+  background-image: linear-gradient(120deg, #3498db, #8e44ad);
   border: 1px solid #dddddd;
   border-radius: 4px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 8px;
-}
-.zain {
-  display: flex;
 }
