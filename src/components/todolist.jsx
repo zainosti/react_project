@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Task from "./task";
 
 const TodoList = () => {
@@ -8,13 +9,25 @@ const TodoList = () => {
   const [incomplete, setincomplete] = useState([]);
   const [ShowCompletedTasks, setShowCompletedTasks] = useState(false);
   const [ShowIncompleteTasks, setShowIncompleteTasks] = useState(false);
+  const [item, setitem] = useState(0);
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     }
   }, []);
-
+  const getData = () => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos")
+      .then((resp) => {
+        const updatedTasks = [...tasks, resp.data[item]];
+        setTasks(updatedTasks);
+        console.log(resp.data);
+        setitem((item) => item + 1);
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+      })
+      .catch((error) => console.log("error", error));
+  };
   const addTask = () => {
     if (newTask.trim() !== "") {
       const task = {
@@ -90,7 +103,7 @@ const TodoList = () => {
   };
   const editTask = (taskId, newTitle) => {
     const updatedTasks = tasks.map((task) => {
-      if (task.id === taskId) {
+      if ((task.id === taskId) & (newTitle !== "")) {
         return {
           ...task,
           title: newTitle,
@@ -117,6 +130,9 @@ const TodoList = () => {
           />
           <button className="add_btn" onClick={addTask}>
             Add Task
+          </button>
+          <button className="submit_btn" onClick={getData}>
+            Add Api Data
           </button>
           <select className="status" onChange={handleSelection}>
             <option>Filter</option>

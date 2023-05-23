@@ -7,6 +7,7 @@ const Apidata = () => {
       .get("https://jsonplaceholder.typicode.com/todos")
       .then((resp) => {
         setData(resp.data);
+        console.log(resp.data);
       })
       .catch((error) => console.log("error", error));
   };
