@@ -44,7 +44,7 @@ const Task = (props) => {
           className="complete_btn"
           onClick={() => props.onComplete(props.task.id)}
         >
-          Complete
+          Mark Complete
         </button>
       )}
       {props.showincomple && (
@@ -52,7 +52,7 @@ const Task = (props) => {
           className="incomplete_btn"
           onClick={() => props.onIncomplete(props.task.id)}
         >
-          InComplete
+          Mark InComplete
         </button>
       )}
       {isEditing ? (
