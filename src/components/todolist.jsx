@@ -5,8 +5,6 @@ import Task from "./task";
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
-  const [completed, setcompleted] = useState([]);
-  const [incomplete, setincomplete] = useState([]);
   const [ShowCompletedTasks, setShowCompletedTasks] = useState(false);
   const [ShowIncompleteTasks, setShowIncompleteTasks] = useState(false);
   const [item, setitem] = useState(0);
@@ -89,22 +87,14 @@ const TodoList = () => {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  const showCompleted = () => {
-    setcompleted(tasks);
-  };
-  const showIncompleted = () => {
-    setincomplete(tasks);
-  };
   const handleSelection = (event) => {
     const selectedValue = event.target.value;
     if (selectedValue === "completed") {
       setShowCompletedTasks(true);
       setShowIncompleteTasks(false);
-      showCompleted();
     } else if (selectedValue === "incomplete") {
       setShowCompletedTasks(false);
       setShowIncompleteTasks(true);
-      showIncompleted();
     }
   };
   const editTask = (taskId, newTitle) => {
@@ -182,9 +172,20 @@ const TodoList = () => {
           <div className="complete">
             {ShowCompletedTasks && <div>Completed Tasks</div>}
             {ShowCompletedTasks &&
-              completed.map((ele) => {
+              tasks.map((ele) => {
                 if (ele.completed) {
-                  return <div>{ele.title}</div>;
+                  return (
+                    <Task
+                      key={ele.id}
+                      task={ele}
+                      onDelete={deleteTask}
+                      onComplete={completeTask}
+                      onIncomplete={incompleteTask}
+                      showcomple={ele.showcompletebtn}
+                      showincomple={ele.showincompletebtn}
+                      onEdit={editTask}
+                    />
+                  );
                 }
                 return null;
               })}
@@ -194,9 +195,20 @@ const TodoList = () => {
           <div className="incomplete">
             {ShowIncompleteTasks && <div>InCompleted Tasks</div>}
             {ShowIncompleteTasks &&
-              incomplete.map((ele) => {
+              tasks.map((ele) => {
                 if (!ele.completed) {
-                  return <div>{ele.title}</div>;
+                  return (
+                    <Task
+                      key={ele.id}
+                      task={ele}
+                      onDelete={deleteTask}
+                      onComplete={completeTask}
+                      onIncomplete={incompleteTask}
+                      showcomple={ele.showcompletebtn}
+                      showincomple={ele.showincompletebtn}
+                      onEdit={editTask}
+                    />
+                  );
                 }
                 return null;
               })}
