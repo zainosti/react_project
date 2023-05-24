@@ -20,7 +20,12 @@ const TodoList = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/todos")
       .then((resp) => {
-        const updatedTasks = [...tasks, resp.data[item]];
+        const apiitems = {
+          ...resp.data[item],
+          showcompletebtn: true,
+          showincompletebtn: false,
+        };
+        const updatedTasks = [...tasks, apiitems];
         setTasks(updatedTasks);
         console.log(resp.data);
         setitem((item) => item + 1);
@@ -127,6 +132,12 @@ const TodoList = () => {
             type="text"
             value={newTask}
             onChange={(e) => setNewTask(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault(); // Prevents form submission on "Enter" key press
+                addTask(); // Call the addTask function when "Enter" is pressed
+              }
+            }}
           />
           <button className="add_btn" onClick={addTask}>
             Add Task
