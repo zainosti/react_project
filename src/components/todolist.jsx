@@ -22,6 +22,7 @@ const TodoList = () => {
       .then((resp) => {
         const apiitems = {
           ...resp.data[item],
+          completed: false,
           showcompletebtn: true,
           showincompletebtn: false,
         };
